@@ -4,6 +4,13 @@ import (
 	"github.com/gofiber/fiber"
 )
 
+type Book struct {
+	gorm.Model
+	Title string `json: "title"`
+	Author string `json: "author"`
+	Rating int `json: "rating"`
+}
+
 func GetBooks(c *fiber.Ctx) {
 	c.Send("All Books ")
 }
