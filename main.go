@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber"
 	"github.com/mikkybang/go-book-api/book"
+	"github.com/mikkybang/go-book-api/database"
 )
 
 func helloWorld(c *fiber.Ctx) {
@@ -20,7 +21,7 @@ func main() {
 	app := fiber.New()
 
 	setupRoutes(app)
-	
+
 	app.Get("/", helloWorld)
 
 	app.Listen(8000)
