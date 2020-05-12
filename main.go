@@ -30,6 +30,8 @@ func main() {
 	app := fiber.New()
 	initDatabase()
 
+	defer database.DBConn.Close()
+
 	setupRoutes(app)
 
 	app.Listen(8000)
