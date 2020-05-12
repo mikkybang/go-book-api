@@ -21,7 +21,7 @@ func GetBooks(c *fiber.Ctx) {
 }
 
 func GetBook(c *fiber.Ctx) {
-	id := c.Params("id");
+	id := c.Params("id")
 	db := database.DBConn
 	var book Book
 	db.Find(&book, id)
@@ -29,7 +29,13 @@ func GetBook(c *fiber.Ctx) {
 }
 
 func NewBook(c *fiber.Ctx) {
-	c.Send("Adds a new Book")
+	db := database.DBConn
+	var book Book
+	book.Title = "1984"
+	book.Author = "George Orwell"
+	book.Rating = 5
+	db.Create(&book)
+	c.JSON(book)
 }
 
 func DeleteBooks(c *fiber.Ctx) {
