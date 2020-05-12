@@ -2,13 +2,14 @@ package book
 
 import (
 	"github.com/gofiber/fiber"
+	"github.com/jinzhu/gorm"
 )
 
 type Book struct {
 	gorm.Model
-	Title string `json: "title"`
+	Title  string `json: "title"`
 	Author string `json: "author"`
-	Rating int `json: "rating"`
+	Rating int    `json: "rating"`
 }
 
 func GetBooks(c *fiber.Ctx) {
