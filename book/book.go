@@ -53,6 +53,6 @@ func DeleteBooks(c *fiber.Ctx) {
 	c.Send("Book successfully deleted")
 }
 
-// func GetBooks(c *fiber.Ctx) {
-// 	c.Send("All Books ")
-// }
+func UpdateBook(c *fiber.Ctx) {
+	c.Send("All Books ")
+}
