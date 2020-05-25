@@ -54,5 +54,16 @@ func DeleteBooks(c *fiber.Ctx) {
 }
 
 func UpdateBook(c *fiber.Ctx) {
-	c.Send("All Books ")
+	id := c.Params("id")
+	db := database.DBConn
+
+	book := new(Book)
+
+	if err := c.BodyParser(book); err != nil {
+		c.Status(503).Send(err)
+		return
+	}
+
+	db.Model(&book).Where("id = ?", id).Updates(book)
+	c.JSON(book)
 }
