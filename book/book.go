@@ -4,7 +4,6 @@ import (
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	"github.com/mikkybang/go-book-api/database"
-	"fmt"
 )
 
 type Book struct {
@@ -65,9 +64,8 @@ func UpdateBook(c *fiber.Ctx) {
 		return
 	}
 
-	fmt.Println(book, id)
-
 	db.Model(&book).Where("ID = ?", id).Updates(&book)
 
+	db.First(&book, id)
 	c.JSON(book)
 }
