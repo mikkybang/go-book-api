@@ -59,14 +59,15 @@ func UpdateBook(c *fiber.Ctx) {
 	db := database.DBConn
 
 	book := new(Book)
-	
-	fmt.Println(book)
 
 	if err := c.BodyParser(book); err != nil {
 		c.Status(503).Send(err)
 		return
 	}
 
-	db.Model(&book).Where("id = ?", id).Updates(book)
+	fmt.Println(book, id)
+
+	db.Model(&book).Where("ID = ?", id).Updates(&book)
+
 	c.JSON(book)
 }
