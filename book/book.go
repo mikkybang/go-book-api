@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber"
 	"github.com/jinzhu/gorm"
 	"github.com/mikkybang/go-book-api/database"
+	"fmt"
 )
 
 type Book struct {
@@ -58,6 +59,8 @@ func UpdateBook(c *fiber.Ctx) {
 	db := database.DBConn
 
 	book := new(Book)
+	
+	fmt.Println(book)
 
 	if err := c.BodyParser(book); err != nil {
 		c.Status(503).Send(err)
